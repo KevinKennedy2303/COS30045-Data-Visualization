@@ -1,0 +1,539 @@
+/* =========================================================
+   Appliance Energy Consumption Website
+   Stylesheet — all site styling lives here.
+
+   Design language: a warm, minimal "household ledger" look —
+   parchment paper, ink-brown type, and rust/gold accents.
+   The signature motif is the torn "bill stub": a dashed,
+   perforated edge used on the FAQ, calculator results, and
+   table caption — a nod to reading a real energy bill.
+   ========================================================= */
+
+:root {
+  /* ---- Colour tokens (warm palette) ---- */
+  --color-paper: #F7EEDF;        /* page background — warm parchment */
+  --color-panel: #FFFBF2;        /* card / panel background, slightly lighter */
+  --color-ink: #33261C;          /* primary text + nav — warm dark brown */
+  --color-muted: #7A6A57;        /* secondary / muted warm brown-grey */
+  --color-rust: #C1502E;         /* primary accent — CTAs, active state */
+  --color-gold: #C98A22;         /* secondary accent — numbers, highlights */
+  --color-sage: #6E7C4C;         /* tertiary accent, used sparingly */
+  --color-line: #E4D3B8;         /* hairline borders */
+  --color-alert: #9C2B2B;        /* validation / error messages */
+
+  /* ---- Type tokens ---- */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  /* ---- Layout tokens ---- */
+  --max-width: 1080px;
+  --radius-s: 4px;
+  --radius-m: 10px;
+}
+
+/* ---------------------------------------------------------
+   Reset / base
+   --------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+p { margin: 0 0 1em; color: var(--color-muted); }
+
+a { color: inherit; }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rust);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   Top navigation — light, quiet, a single rust rule
+   underlines the active page instead of a filled pill
+   --------------------------------------------------------- */
+.site-header {
+  background: var(--color-paper);
+  border-bottom: 1px solid var(--color-line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-bar {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--color-ink);
+}
+
+.brand img { width: 30px; height: 30px; }
+
+.brand-text {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.brand-text span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.92rem;
+  padding: 4px 2px 8px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-rust);
+  transition: right 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-ink);
+}
+
+.nav-links a:hover::after {
+  right: 0;
+}
+
+.nav-links a.active {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.nav-links a.active::after {
+  right: 0;
+  background: var(--color-rust);
+}
+
+/* ---------------------------------------------------------
+   Hero — quiet, light, type-led. The signature mark is a
+   simple radiating "warmth" glyph drawn in line art.
+   --------------------------------------------------------- */
+.hero { padding: 64px 0 56px; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.6fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-rust);
+  margin-bottom: 14px;
+  display: inline-block;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 2.85rem);
+  color: var(--color-ink);
+  max-width: 15ch;
+}
+
+.hero p.lead {
+  color: var(--color-muted);
+  font-size: 1.02rem;
+  max-width: 48ch;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 26px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 11px 20px;
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-rust);
+  color: var(--color-panel);
+}
+
+.btn-primary:hover { opacity: 0.88; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-line);
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-rust);
+  color: var(--color-rust);
+}
+
+/* ---- Signature mark: a simple radiating warmth glyph ---- */
+.hero-mark {
+  width: 100%;
+  max-width: 190px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+}
+
+.hero-mark svg { width: 100%; height: 100%; }
+
+/* ---------------------------------------------------------
+   General sections
+   --------------------------------------------------------- */
+.section { padding: 52px 0; }
+
+.section-heading { max-width: 60ch; margin-bottom: 32px; }
+
+.section-heading h2 { font-size: clamp(1.4rem, 2.6vw, 1.85rem); }
+
+/* ---- Ledger list: replaces boxed "stat card" grids with a
+   quiet row-based list — the minimal, warm alternative ---- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--color-line);
+  margin-top: 8px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--color-line);
+  background: none;
+  border-radius: 0;
+}
+
+.stat-card .stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  flex-shrink: 0;
+  min-width: 110px;
+}
+
+.stat-card .stat-value span { color: var(--color-gold); }
+
+.stat-card p { margin: 0; font-size: 0.92rem; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---------------------------------------------------------
+   FAQ accordion — styled as a "bill stub" that tears open:
+   a dashed rule stands in for the perforation.
+   --------------------------------------------------------- */
+.faq-list { border-top: 1px dashed var(--color-line); }
+
+.faq-item { border-bottom: 1px dashed var(--color-line); }
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  padding: 18px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.faq-question:hover { color: var(--color-rust); }
+
+.faq-icon {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-panel);
+  background: var(--color-gold);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);
+  background: var(--color-rust);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.faq-answer p { padding: 0 4px 18px; margin: 0; }
+
+/* ---------------------------------------------------------
+   Tables (Televisions page)
+   --------------------------------------------------------- */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-m);
+  border: 1px solid var(--color-line);
+  background: var(--color-panel);
+}
+
+table { width: 100%; border-collapse: collapse; min-width: 520px; }
+
+thead th {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-panel);
+  background: var(--color-ink);
+  text-align: left;
+  padding: 12px 16px;
+}
+
+tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.92rem;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+tbody td.num { font-family: var(--font-mono); color: var(--color-ink); }
+
+/* ---------------------------------------------------------
+   Calculator — a light "utility bill" panel. Results are
+   styled as a receipt stub with a perforated top edge.
+   --------------------------------------------------------- */
+.calculator {
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-m);
+  padding: 32px;
+  color: var(--color-ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.calc-form h3, .calc-results h3 {
+  font-size: 1rem;
+  color: var(--color-ink);
+}
+
+.field { margin-bottom: 18px; }
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-ink);
+}
+
+.field .hint { font-size: 0.76rem; color: var(--color-muted); margin-top: 4px; }
+
+.field input, .field select {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  padding: 10px 12px;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-line);
+  background: #FFFDF8;
+  color: var(--color-ink);
+}
+
+.field input:focus, .field select:focus { border-color: var(--color-rust); }
+
+.field-error {
+  color: var(--color-alert);
+  font-size: 0.78rem;
+  margin-top: 6px;
+  display: none;
+}
+
+.field.has-error input, .field.has-error select { border-color: var(--color-alert); }
+
+.field.has-error .field-error { display: block; }
+
+.calc-results {
+  background: var(--color-paper);
+  border-top: 2px dashed var(--color-line);
+  border-radius: 0 0 var(--radius-m) var(--radius-m);
+  padding: 22px 22px 6px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 12px;
+  background: var(--color-line);
+  border: 1px solid var(--color-line);
+}
+
+.result-card { background: var(--color-panel); padding: 14px; border-radius: 0; }
+
+.result-card .label {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  display: block;
+}
+
+.result-card .value {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-rust);
+  display: block;
+  margin-top: 4px;
+}
+
+.calc-status { margin-top: 16px; font-size: 0.85rem; color: var(--color-muted); padding-bottom: 16px; }
+
+.calc-status.is-empty { font-style: italic; }
+
+/* ---------------------------------------------------------
+   About page
+   --------------------------------------------------------- */
+.value-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 2px; background: var(--color-line); border: 1px solid var(--color-line); }
+
+.value-list li { background: var(--color-panel); padding: 16px 18px; }
+
+.value-list strong { color: var(--color-ink); font-family: var(--font-display); }
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+.site-footer {
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  padding: 22px 0;
+  margin-top: 30px;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.84rem;
+}
+
+.footer-inner .genai-note { font-size: 0.76rem; color: var(--color-muted); }
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 860px) {
+  .hero-grid, .two-col, .calculator { grid-template-columns: 1fr; }
+  .hero-mark { max-width: 130px; }
+  .nav-links { gap: 18px; }
+  .result-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .nav-links a { font-size: 0.85rem; }
+  .brand-text { font-size: 0.9rem; }
+  .stat-card { flex-direction: column; gap: 4px; }
+}
