@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Televisions | Appliance Energy Consumption</title>
+  <meta name="description" content="Typical television power draw and an interactive calculator to estimate running costs." />
+
+  <link rel="icon" href="assets/img/PowerIcon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <header class="site-header">
+    <nav class="nav-bar" aria-label="Primary">
+      <a class="brand" href="index.html">
+        <img src="assets/img/PowerIcon.png" alt="Appliance Energy Consumption logo" />
+        <span class="brand-text">Appliance Energy<span>Australian Market</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="televisions.html" class="active" aria-current="page">Televisions</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Page intro ===== -->
+  <section class="section" style="padding-bottom: 24px;">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Appliance Focus</span>
+        <h2>Televisions and energy use</h2>
+        <p>
+          If you're weighing up a screen upgrade — or you're the one stocking
+          the shop floor — two questions usually matter most:
+          <strong>which brands actually dominate what people buy</strong>, and
+          <strong>how much more will a bigger screen cost to run</strong>?
+          The data below comes from 4,724 television models registered with
+          Australia's national Energy Rating scheme, and answers both.
+        </p>
+      </div>
+
+      <div class="data-story">
+        <h3>Which brands actually dominate the market?</h3>
+        <p class="data-story-note">
+          76 different TV brands are registered for sale in Australia — but
+          buying decisions cluster around a handful of names. Share of the
+          4,724 registered models, by brand:
+        </p>
+        <div class="barchart">
+          <div class="barchart-row">
+            <span class="barchart-label">Samsung</span>
+            <div class="barchart-track"><div class="barchart-fill" style="width: 73%;"></div></div>
+            <span class="barchart-value">24.3%</span>
+          </div>
+          <div class="barchart-row">
+            <span class="barchart-label">Kogan</span>
+            <div class="barchart-track"><div class="barchart-fill" style="width: 53%;"></div></div>
+            <span class="barchart-value">17.5%</span>
+          </div>
+          <div class="barchart-row">
+            <span class="barchart-label">LG</span>
+            <div class="barchart-track"><div class="barchart-fill" style="width: 45%;"></div></div>
+            <span class="barchart-value">15.0%</span>
+          </div>
+          <div class="barchart-row">
+            <span class="barchart-label">Hisense</span>
+            <div class="barchart-track"><div class="barchart-fill is-secondary" style="width: 17%;"></div></div>
+            <span class="barchart-value">5.8%</span>
+          </div>
+          <div class="barchart-row">
+            <span class="barchart-label">Eko</span>
+            <div class="barchart-track"><div class="barchart-fill is-secondary" style="width: 13%;"></div></div>
+            <span class="barchart-value">4.2%</span>
+          </div>
+          <div class="barchart-row">
+            <span class="barchart-label">Sylvox</span>
+            <div class="barchart-track"><div class="barchart-fill is-secondary" style="width: 9%;"></div></div>
+            <span class="barchart-value">2.9%</span>
+          </div>
+          <div class="barchart-row">
+            <span class="barchart-label">71 other brands</span>
+            <div class="barchart-track"><div class="barchart-fill is-muted" style="width: 100%;"></div></div>
+            <span class="barchart-value">30.3%</span>
+          </div>
+        </div>
+        <div class="data-callout">
+          <strong>Samsung, Kogan and LG</strong> account for 57% of every registered
+          model between them — the remaining 71 brands share the rest.
+        </div>
+      </div>
+
+      <div class="data-story">
+        <h3>Do bigger screens really cost more to run?</h3>
+        <p class="data-story-note">
+          Yes — and the jump is bigger than most people expect. Average yearly
+          labelled energy consumption by screen-size band:
+        </p>
+        <div class="barchart">
+          <div class="barchart-row">
+            <span class="barchart-label">Small (&lt;50")</span>
+            <div class="barchart-track"><div class="barchart-fill is-tertiary" style="width: 14%;"></div></div>
+            <span class="barchart-value">64 kWh/yr</span>
+          </div>
+          <div class="barchart-row">
+            <span class="barchart-label">Medium (50–70")</span>
+            <div class="barchart-track"><div class="barchart-fill is-tertiary" style="width: 18%;"></div></div>
+            <span class="barchart-value">84 kWh/yr</span>
+          </div>
+          <div class="barchart-row">
+            <span class="barchart-label">Large (&gt;70")</span>
+            <div class="barchart-track"><div class="barchart-fill" style="width: 100%;"></div></div>
+            <span class="barchart-value">462 kWh/yr</span>
+          </div>
+        </div>
+        <div class="data-callout is-sage">
+          A large screen (70"+) uses roughly <strong>7×</strong> the energy of a
+          small one every year — screen size and energy use are strongly
+          correlated (r&nbsp;=&nbsp;0.86) across the registered models. Curious
+          what that means in dollars for a specific model? Try the
+          <a href="#calculator">calculator below</a>.
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top: 44px;">
+        <table>
+          <caption class="visually-hidden">Typical television power draw by model</caption>
+          <thead>
+            <tr>
+              <th scope="col">Model</th>
+              <th scope="col">Panel type</th>
+              <th scope="col">Typical power draw</th>
+              <th scope="col">Est. daily cost*</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>32" LED TV</td>
+              <td>LED</td>
+              <td class="num">50 W</td>
+              <td class="num">$0.09</td>
+            </tr>
+            <tr>
+              <td>43" LED TV</td>
+              <td>LED</td>
+              <td class="num">75 W</td>
+              <td class="num">$0.13</td>
+            </tr>
+            <tr>
+              <td>55" QLED TV</td>
+              <td>QLED</td>
+              <td class="num">110 W</td>
+              <td class="num">$0.20</td>
+            </tr>
+            <tr>
+              <td>65" OLED TV</td>
+              <td>OLED</td>
+              <td class="num">150 W</td>
+              <td class="num">$0.27</td>
+            </tr>
+            <tr>
+              <td>50" Plasma TV (older model)</td>
+              <td>Plasma</td>
+              <td class="num">220 W</td>
+              <td class="num">$0.39</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 0.82rem; margin-top: 10px;">
+        *Estimate based on 4 hours/day at 29.9c/kWh. Use the calculator below
+        to try your own numbers.
+      </p>
+
+      <div class="data-source-note">
+        <strong>About this data:</strong> the brand and screen-size figures
+        above come from the Australian Government's Energy Rating product
+        registration database (a snapshot taken 15 February 2026, 4,724
+        models). It records what manufacturers register for sale, not actual
+        household purchases or real-world viewing hours, so treat it as a
+        picture of the market rather than a survey of homes. Full source,
+        processing and limitations notes are in this project's README.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Interactive Calculator ===== -->
+  <section class="section" id="calculator">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Interactive Tool</span>
+        <h2>Appliance Energy Calculator</h2>
+        <p>
+          Pick a television model (or enter your own appliance's wattage),
+          set your daily usage and electricity price, and the results panel
+          will update automatically.
+        </p>
+      </div>
+
+      <div class="calculator">
+        <form class="calc-form" id="calc-form" novalidate>
+          <h3>Your appliance</h3>
+
+          <div class="field">
+            <label for="calc-model">Appliance model</label>
+            <select id="calc-model" name="calc-model">
+              <!-- options injected by calculator.js -->
+            </select>
+            <p class="hint">Choosing a model auto-fills the wattage field below.</p>
+          </div>
+
+          <div class="field" id="field-watts">
+            <label for="calc-watts">Power usage (watts)</label>
+            <input type="number" id="calc-watts" name="calc-watts" min="1" max="5000" step="1" placeholder="e.g. 110" />
+            <p class="field-error" role="alert"></p>
+          </div>
+
+          <div class="field" id="field-hours">
+            <label for="calc-hours">Average hours of use per day</label>
+            <input type="number" id="calc-hours" name="calc-hours" min="0" max="24" step="0.5" placeholder="e.g. 4" />
+            <p class="field-error" role="alert"></p>
+          </div>
+
+          <div class="field" id="field-price">
+            <label for="calc-price">Electricity price (cents per kWh)</label>
+            <input type="number" id="calc-price" name="calc-price" min="0" max="200" step="0.1" placeholder="e.g. 29.9" />
+            <p class="field-error" role="alert"></p>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+
+        <div class="calc-results">
+          <h3>Estimated results</h3>
+
+          <div class="result-grid">
+            <div class="result-card">
+              <span class="label">Daily energy</span>
+              <span class="value" id="result-daily-kwh">—</span>
+            </div>
+            <div class="result-card">
+              <span class="label">Monthly energy</span>
+              <span class="value" id="result-monthly-kwh">—</span>
+            </div>
+            <div class="result-card">
+              <span class="label">Yearly energy</span>
+              <span class="value" id="result-yearly-kwh">—</span>
+            </div>
+            <div class="result-card">
+              <span class="label">Yearly cost</span>
+              <span class="value" id="result-yearly-cost">—</span>
+            </div>
+          </div>
+
+          <p class="calc-status is-empty" id="calc-status">
+            Enter your appliance details and press Calculate to see results.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; <span data-current-year>2026</span> Your Name</span>
+      <span class="genai-note">
+        Portions of this site's code and placeholder copy were drafted with the
+        assistance of Generative AI (Claude, Anthropic) and reviewed/edited by
+        the author.
+      </span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/calculator.js"></script>
+</body>
+</html>
